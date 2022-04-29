@@ -7,8 +7,8 @@
     <title>{{ $appTitle }}</title>
 </head>
 <body>
-    @unless ($random === 50)
-        <p>{{ $random }}は、50ではありません！</p>
-    @endunless
+    @foreach ($member as $key => $value )
+        <li>{{ $key }} : {{ $value }}</li>
+    @endforeach
 </body>
 </html>

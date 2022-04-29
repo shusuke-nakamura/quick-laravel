@@ -7,8 +7,14 @@
     <title>{{ $appTitle }}</title>
 </head>
 <body>
-    @unless ($random === 50)
-        <p>{{ $random }}は、50ではありません！</p>
-    @endunless
+    @php
+        $i = 0;
+    @endphp
+    @while ($i < 6)
+        @php
+            $i++;
+        @endphp
+        <h{{ $i }}>{{ $i }}番目です。</h{{ $i }}>
+    @endwhile
 </body>
 </html>

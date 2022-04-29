@@ -7,8 +7,8 @@
     <title>{{ $appTitle }}</title>
 </head>
 <body>
-    @unless ($random === 50)
-        <p>{{ $random }}は、50ではありません！</p>
-    @endunless
+    @for ($i = 1; $i <= 6; $i++)
+        <h{{ $i }}>{{ $i }}番目です。</h{{ $i }}>
+    @endfor
 </body>
 </html>

@@ -7,8 +7,10 @@
     <title>{{ $appTitle }}</title>
 </head>
 <body>
-    @unless ($random === 50)
-        <p>{{ $random }}は、50ではありません！</p>
-    @endunless
+    @isset($msg)
+        <p>変数msgは「{{ $msg }}」です。</p>
+    @else
+        <p>メッセージはありません。</p>
+    @endisset
 </body>
 </html>
