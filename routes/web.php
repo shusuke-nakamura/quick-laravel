@@ -62,4 +62,16 @@ Route::view('/route', 'route.view', ['name' => 'Laravel']);
 
 Route::get('/route/enum_param/{category}', 'RouteController@enum_param');
 
-Route::redirect('/hoge', '/');
+// Route::redirect('/hoge', '/');
+// Route::redirect('/hoge', '/', 301);
+
+Route::resource('/articles', 'ArticleController');
+// Route::resource('/articles', 'ArticleController')->except(['edit', 'update']);
+// Route::resources([
+//     '/articles' => 'ArticleController',
+//     '/hello' => 'HelloController'
+// ]);
+
+Route::fallback(function () {
+    return view('route.error');
+});
