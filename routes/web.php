@@ -30,3 +30,7 @@ Route::get('/view/switch', 'ViewController@switch');
 Route::get('/view/while', 'ViewController@while');
 Route::get('/view/for', 'ViewController@for');
 Route::get('/view/foreach_assoc', 'ViewController@foreach_assoc');
+Route::get('/view/foreach_loop', 'ViewController@foreach_loop');
+Route::get('/view/style_class', 'ViewController@style_class');
+Route::get('/view/checked', 'ViewController@checked');
+Route::get('/view/master', 'ViewController@master');

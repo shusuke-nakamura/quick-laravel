@@ -67,4 +67,32 @@ class ViewController extends Controller
             ]
         ]);
     }
+
+    public function foreach_loop()
+    {
+        return view('view.foreach_loop', [
+            'weeks' => ['月', '火', '水', '木', '金', '土', '日']
+        ]);
+    }
+
+    public function style_class()
+    {
+        return view('view.style_class', [
+            'isEnabled' => true
+        ]);
+    }
+
+    public function checked()
+    {
+        return view('view.checked', [
+            'isEnabled' => true
+        ]);
+    }
+
+    public function master()
+    {
+        return view('view.master', [
+            'msg' => 'こんにちは、世界！',
+        ]);
+    }
 }
