@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HelloController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', 'HelloController@index');
-Route::get('/hello/view', 'HelloController@view');
-Route::get('/hello/list', 'HelloController@list');
+// Route::get('/hello', 'HelloController@index');
+// Route::get('/hello/view', 'HelloController@view');
+// Route::get('/hello/list', 'HelloController@list');
+// コントローラでまとめる
+Route::controller(HelloController::class)->group(function () {
+    Route::get('/hello', 'index');
+    Route::get('/hello/view', 'view');
+    Route::get('/hello/list', 'list');
+});
 
 Route::get('/view/escape', 'ViewController@escape');
 Route::get('/view/comment', 'ViewController@comment');
@@ -40,3 +47,19 @@ Route::get('/view/list', 'ViewController@list');
 // Route::get('/route/param/{id?}', 'RouteController@param');
 // Route::get('/route/param/{id?}', 'RouteController@param')->where(['id' => '[0-9]{2,3}']);
 Route::get('/route/param/{id?}', 'RouteController@param')->whereNumber('id');
+Route::get('/route/search/{keywd?}', 'RouteController@search')->where('keywd', '.*');
+
+Route::prefix('/members')->group(function () {
+    Route::get('/info', 'RouteController@info');
+    Route::get('/article', 'RouteController@article');
+});
+
+Route::namespace('Main')->group(function () {
+    Route::get('/route/ns', 'RouteController@ns');
+});
+
+Route::view('/route', 'route.view', ['name' => 'Laravel']);
+
+Route::get('/route/enum_param/{category}', 'RouteController@enum_param');
+
+Route::redirect('/hoge', '/');
