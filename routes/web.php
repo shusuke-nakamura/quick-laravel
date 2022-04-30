@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::controller(HelloController::class)->group(function () {
     Route::get('/hello', 'index');
     Route::get('/hello/view', 'view');
-    Route::get('/hello/list', 'list');
+    Route::get('/hello/list', 'list')->name('list');
 });
 
 Route::get('/view/escape', 'ViewController@escape');
@@ -73,6 +73,12 @@ Route::resource('/articles', 'ArticleController');
 // ]);
 
 Route::get('/ctrl/plain', 'CtrlController@plain');
+Route::get('/ctrl/header', 'CtrlController@header');
+Route::get('/ctrl/outJson', 'CtrlController@outJson');
+Route::get('/ctrl/outFile', 'CtrlController@outFile');
+Route::get('/ctrl/outCsv', 'CtrlController@outCsv');
+Route::get('/ctrl/outImage', 'CtrlController@outImage');
+Route::get('/ctrl/redirectBasic', 'CtrlController@redirectBasic');
 
 Route::fallback(function () {
     return view('route.error');
