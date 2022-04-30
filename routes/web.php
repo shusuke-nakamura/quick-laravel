@@ -72,6 +72,8 @@ Route::resource('/articles', 'ArticleController');
 //     '/hello' => 'HelloController'
 // ]);
 
+Route::get('/ctrl/plain', 'CtrlController@plain');
+
 Route::fallback(function () {
     return view('route.error');
 });
