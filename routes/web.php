@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HelloController;
+use App\Http\Middleware\LogMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -84,6 +85,7 @@ Route::get('/ctrl/form/{name?}', 'CtrlController@form');
 Route::post('/ctrl/result', 'CtrlController@result');
 Route::get('/ctrl/upload', 'CtrlController@upload');
 Route::post('/ctrl/uploadfile', 'CtrlController@uploadfile');
+Route::get('/ctrl/middle', 'CtrlController@middle')->middleware(LogMiddleware::class);
 
 Route::fallback(function () {
     return view('route.error');
