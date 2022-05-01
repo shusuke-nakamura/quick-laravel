@@ -46,7 +46,7 @@ Route::get('/view/list', 'ViewController@list');
 
 // Route::get('/route/param/{id?}', 'RouteController@param');
 // Route::get('/route/param/{id?}', 'RouteController@param')->where(['id' => '[0-9]{2,3}']);
-Route::get('/route/param/{id?}', 'RouteController@param')->whereNumber('id');
+Route::get('/route/param/{id?}', 'RouteController@param')->whereNumber('id')->name('param');
 Route::get('/route/search/{keywd?}', 'RouteController@search')->where('keywd', '.*');
 
 Route::prefix('/members')->group(function () {
