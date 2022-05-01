@@ -79,6 +79,11 @@ Route::get('/ctrl/outFile', 'CtrlController@outFile');
 Route::get('/ctrl/outCsv', 'CtrlController@outCsv');
 Route::get('/ctrl/outImage', 'CtrlController@outImage');
 Route::get('/ctrl/redirectBasic', 'CtrlController@redirectBasic');
+Route::get('/ctrl/index', 'CtrlController@index');
+Route::get('/ctrl/form/{name?}', 'CtrlController@form');
+Route::post('/ctrl/result', 'CtrlController@result');
+Route::get('/ctrl/upload', 'CtrlController@upload');
+Route::post('/ctrl/uploadfile', 'CtrlController@uploadfile');
 
 Route::fallback(function () {
     return view('route.error');

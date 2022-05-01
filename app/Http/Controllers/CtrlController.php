@@ -60,4 +60,49 @@ class CtrlController extends Controller
         // return redirect()->route('param', ['id' => 108]);
         // return redirect()->away('https://wings.msn.to/');
     }
+
+    public function index(Request $req)
+    {
+        return 'リクエストパス:' . $req->path();
+    }
+
+    public function form()
+    {
+        return view('ctrl.form', ['result' => '']);
+    }
+
+    public function result(Request $req)
+    {
+        $name = $req->name;
+        // $name = $req->input('hoge', '名無権兵衛');
+        // $dt = $req->date('name', 'Y-m-d', 'Asia/Tokyo');
+        return view('ctrl.form', [
+            'result' => 'こんにちは、' . $name . 'さん!'
+        ]);
+    }
+
+    public function upload()
+    {
+        return view('ctrl.upload', ['result' => '']);
+    }
+
+    public function uploadfile(Request $req)
+    {
+        if (!$req->hasFile('upfile')) {
+            return 'ファイルを指定してください。';
+        }
+
+        $file = $req->upfile;
+
+        if (!$file->isValid()) {
+            return 'アップロードに失敗しました。';
+        }
+
+        $name = $file->getClientOriginalName();
+        $file->storeAs('files', $name);
+
+        return view('ctrl.upload', [
+            'result' => $name . 'をアップロードしました。'
+        ]);
+    }
 }
