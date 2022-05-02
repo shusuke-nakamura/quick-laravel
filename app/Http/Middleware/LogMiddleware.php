@@ -23,6 +23,9 @@ class LogMiddleware
         //     'title' => '速習Laravel',
         //     'author' => 'YAMADA, Yoshihiro'
         // ]);
+        // $response = $next($request);
+        // $response->setContent(mb_strtoupper($response->content()));
+        // return $response;
 
         return $next($request);
     }
