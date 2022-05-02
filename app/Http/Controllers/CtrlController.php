@@ -83,11 +83,16 @@ class CtrlController extends Controller
     public function result(Request $req)
     {
         $name = $req->name;
-        // $name = $req->input('hoge', '名無権兵衛');
-        // $dt = $req->date('name', 'Y-m-d', 'Asia/Tokyo');
-        return view('ctrl.form', [
-            'result' => 'こんにちは、' . $name . 'さん!'
-        ]);
+        if (empty($name) || mb_strlen($name) > 10) {
+            return redirect('ctrl/form')->withInput()->with('alert', '名前は必須、または、10文字以内で入力してください。');
+        } else {
+            // $name = $req->input('hoge', '名無権兵衛');
+            // $dt = $req->date('name', 'Y-m-d', 'Asia/Tokyo');
+            // $req->flash();
+            return view('ctrl.form', [
+                'result' => 'こんにちは、' . $name . 'さん!'
+            ]);
+        }
     }
 
     public function upload()

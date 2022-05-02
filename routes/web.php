@@ -94,6 +94,8 @@ Route::get('/ctrl/basic', 'CtrlController@basic');
 
 Route::get('/state/recCookie', 'StateController@recCookie');
 Route::get('/state/readCookie', 'StateController@readCookie');
+Route::get('/state/session1', 'StateController@session1');
+Route::get('/state/session2', 'StateController@session2');
 
 Route::fallback(function () {
     return view('route.error');
