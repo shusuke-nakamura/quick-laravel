@@ -92,6 +92,9 @@ Route::get('/ctrl/middle', 'CtrlController@middle')->middleware(LogMiddleware::c
 // Route::get('/ctrl/middle', 'CtrlController@middle');
 Route::get('/ctrl/basic', 'CtrlController@basic');
 
+Route::get('/state/recCookie', 'StateController@recCookie');
+Route::get('/state/readCookie', 'StateController@readCookie');
+
 Route::fallback(function () {
     return view('route.error');
 });
