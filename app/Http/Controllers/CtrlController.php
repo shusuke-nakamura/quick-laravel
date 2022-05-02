@@ -6,6 +6,15 @@ use Illuminate\Http\Request;
 
 class CtrlController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $access_log_file =  dirname(dirname(dirname(dirname(__FILE__)))) . "/storage/logs/access.log";
+            file_put_contents($access_log_file, date('Y-m-d H:i:s'), FILE_APPEND);
+            return $next($request);
+        })->only(['basic', 'basic2']);
+    }
+
     public function plain()
     {
         return response('こんにちは、世界！', 200)->header('Content-Type', 'text/plain');
@@ -107,6 +116,11 @@ class CtrlController extends Controller
     }
 
     public function middle()
+    {
+        return 'log is recorded!!';
+    }
+
+    public function basic()
     {
         return 'log is recorded!!';
     }
