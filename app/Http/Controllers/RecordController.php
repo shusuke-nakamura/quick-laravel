@@ -43,4 +43,11 @@ class RecordController extends Controller
         // return $result;
 
     }
+
+    public function hasMany()
+    {
+        return view('record.hasmany', [
+            'book' => Book::find(1)
+        ]);
+    }
 }

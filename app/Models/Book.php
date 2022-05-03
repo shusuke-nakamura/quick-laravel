@@ -18,4 +18,9 @@ class Book extends Model
     {
         $query->where('publisher', $name);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
