@@ -2,6 +2,13 @@
 @section('title', '書籍情報フォーム')
 @section('main')
     <form action="/save" method="post">
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $err)
+                    <li class="text-danger">{{ $err }}</li>
+                @endforeach
+            </ul>
+        @endif
         @csrf
         <div class="pl-2">
             <label for="isbn">ISBNコード:</label><br />
